@@ -56,7 +56,7 @@ import random
 
 
 def subsetwithsize(lst,k):
-    #a function to find subsets of a list with given size k
+    # a function to find the subsets of a list with given size k
     superlist=[]
     
     consider={}
@@ -83,7 +83,7 @@ def subsetwithsize(lst,k):
 
 
 def potential_cards(community,holding):
-    # a function that finds potential cards of the other player given the community cards and own-holding.
+    # a function that finds the list of the potential cards of the other player given the community cards and own-holding.
     superlist=[]
     to_consider=deck[:]
     for i in community:
@@ -208,7 +208,7 @@ def cardrankcomposer(cards):
     return Compositionlist
 
 def rankcomparator(cards1,cards2):
-    #Compares the composed ranks of two sets of cards. This function does not do flush and straight-comparisons. 
+    #Compares the composed ranks of two sets of cards. This function does not do flush and straight-related comparisons. 
     if cardrankcomposer(cards1)[0:5]==cardrankcomposer(cards2)[0:5]:
         return "equal"
     cardranks1=cardrankcomposer(cards1)[0:5]
@@ -233,7 +233,7 @@ def rankcomparator(cards1,cards2):
             
 
 def cardscomparator(cards1,cards2):
-    #based on above it compares two sets of cards combinations.
+    # Based on above it compares two sets of cards combinations.
     if straightflushtest(cards1):
         if straightflushtest(cards2):
             return rankcomparator(cards1,cards2)
@@ -254,13 +254,13 @@ def cardscomparator(cards1,cards2):
         
 
 # To order many cards at once and obtain the potential strength of a card combination we do not use the exact rankcomparators. 
-# This would have required obtaining a sorted list out of binary comparisons. I have refrained from trying to solve that problem directly which might be computation-intesive.
-# Instead I decided to classify card combinations into segments based on their strength using most of the available information.
-# I give them scores based on these segments and finally compare them according these scores.
+# This would have required obtaining a sorted list based on only binary comparisons. I have refrained from trying to solve that problem directly which might be computation-intesive.
+# Instead, I decided to classify card combinations into segments based on their strength using most of the available information.
+# I give them scores based on these segments and finally compare them according those scores.
 
 
 def combinationscorer(cards):
-    #This classifies card combinations and records the strength of some of the cards relevant for comparison.
+    #This classifies card combinations and records the strength of some of the included cards relevant for comparison.
     if flushtest(cards):           
         if straighttest(flushset(cards)):
             superlist=["sf"]
@@ -360,13 +360,13 @@ def percentile_calculator(community, holding):
 
 
 # The follong function describes a one-round simplified poker with two players and only river (all 5 community cards are open).
-# The program takes strategies of the players which describe fully what a player would do in the game, and distributes cards randomly.
+# The program takes strategies of the players which describe fully what a player would do in the game and distributes cards randomly.
 # Based on the cards and strategies, it redistributes cash and records the game information in memory-tuples.
-# Specifics: Each player has a cash amount of 9, pot is set at 9 and each player can only bet or raise 3 euros at once.
-# The strategies of the players are strength-percentile dependent- and take the form of dictionaries. 
+# Specifics: Each player has a cash amount of 9, the pot is set at 9 and each player can only bet or raise 3 euros at once.
+# The strategies of the players are strength-percentile dependent- meaning that they take the form of dictionaries. 
 # That is we assume the players would play the same strategy if two different card combinations belong to the same percentile interval.
 # The strategy relevant intervals are 0-1pcn, 1-10pcn, 10-25pcn, 25-50pcn, 50-75pcn, 75-90pcn, 90-99pcn.
-# Since the first action of the second player depends on what she observes first, her strategy dictionary depends on the first action of the first player.
+# Since the first action of the second player depends on what she observes first, her strategy dictionary depends on the first move of the first player.
 
 
 
@@ -575,7 +575,7 @@ def repeated_game(n):
     cache_dict_2["ch"]={}
     cache_dict_2["r"]={}
     i=0
-    while i<=n:
+    while i<n:
         
         strategy1,strategy2= strategy_generator(memory_player1,memory_player2)
         cash_1,cash_2,memory1,memory2=game(strategy1,strategy2)
@@ -722,7 +722,7 @@ def strategy_recommender(memory_tuple):
 
 
 
-# To compare the relative stability of the recommended strategy out of two different simulations, we write a simple dictionary comparator.
+# To compare the relative convergence of the recommended strategies out of two different simulations, we write a simple dictionary comparator.
 def dict_comp(dict_1,dict_2):
     comp=0
     count=0
