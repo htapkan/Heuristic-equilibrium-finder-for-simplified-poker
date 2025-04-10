@@ -362,7 +362,7 @@ def percentile_calculator(community, holding):
 # The follong function describes a one-round simplified poker with two players and only river (all 5 community cards are open).
 # The program takes strategies of the players which describe fully what a player would do in the game and distributes cards randomly.
 # Based on the cards and strategies, it redistributes cash and records the game information in memory-tuples.
-# Specifics: Each player has a cash amount of 9, the pot is set at 9 and each player can only bet or raise 3 euros at once.
+# Specifics: Each player has a cash amount of 9, the pot is set at 6 and each player can only bet or raise 3 euros at once.
 # The strategies of the players are strength-percentile dependent- meaning that they take the form of dictionaries. 
 # That is we assume the players would play the same strategy if two different card combinations belong to the same percentile interval.
 # The strategy relevant intervals are 0-1pcn, 1-10pcn, 10-25pcn, 25-50pcn, 50-75pcn, 75-90pcn, 90-99pcn.
