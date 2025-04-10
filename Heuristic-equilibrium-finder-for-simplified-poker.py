@@ -478,7 +478,7 @@ def game(strategy1,strategy2):
 # The strategy is generated in a random but structured process. 
 # Simply, if a set of strategies are not tested (as indicated in the memory) for a given percentile, then the function makes a random choice out of these elements for the respective percentile.
 # If for a given percentile, all options are tested, then the program orders the strategies based on the average cash return indicated in the memory.
-# Based on this ordering, it chooses the best alternative with 90% probability, the second best with 10% probability. The last 10% is distributed within the remaining alternatives. 
+# Based on this ordering, it chooses the best alternative with 80% probability, the second best with 10% probability. The last 10% is distributed within the remaining alternatives. 
 
 
 def strategy_generator(memory1,memory2):
@@ -505,7 +505,7 @@ def strategy_generator(memory1,memory2):
             weig=[]
             b=len(a)-2
 
-            weig.append(9*b)
+            weig.append(8*b)
             weig.append(b)
             weig=weig+[1]*b
         
@@ -529,7 +529,7 @@ def strategy_generator(memory1,memory2):
                 weig=[]
                 b=len(a)-2
 
-                weig.append(9*b)
+                weig.append(8*b)
                 weig.append(b)
                 weig=weig+[1]*b
         
